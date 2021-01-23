@@ -11,4 +11,17 @@ describe('listFetcher', () => {
       error: "Please provide at least one url"
     })
   })
+
+  it('resolves to an array containing json data when passed an array with valid urls', () => {
+    const urls = [
+      'http://localhost:3100/api/users', 
+      'http://localhost:3100/api/users', 
+      'http://localhost:3100/api/users'
+    ]
+    return listFetcher(urls).then(data => {
+      for (let datum of data) {
+        expect(typeof JSON.parse(datum)).toBe('object')
+      }
+    })
+  })
 })
