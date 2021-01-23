@@ -10,7 +10,7 @@ describe('Request', () => {
     })
 
     it('returns a promise', () => {
-      expect(request.get('https://jsonplaceholder.typicode.com/todos/1').then instanceof Function).toBe(true)
+      expect(request.get('http://localhost:3100/api/users').then instanceof Function).toBe(true)
     })
 
     it('rejects when passed an empty string', async () => {
