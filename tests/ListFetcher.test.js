@@ -24,4 +24,10 @@ describe('listFetcher', () => {
       }
     })
   })
+
+  it('rejects when passed an argument that is not an array', async () => {
+    await expect(listFetcher(100)).rejects.toEqual({
+      error: "Invalid argument, must supply input of type array"
+    })
+  })
 })
