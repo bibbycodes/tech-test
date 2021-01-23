@@ -1,0 +1,14 @@
+{
+  "name": "node-fetch-tech-test",
+  "version": "1.0.0",
+  "description": "A package for fetching lists of json data",
+  "main": "node-fetch.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Robert Griffith",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
