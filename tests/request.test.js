@@ -23,10 +23,17 @@ describe('Request', () => {
         })
     })
 
-    it('returns a status code of 200 on successful retrieval of data', () => {
+    it('has a status code of 200 on successful retrieval of data', () => {
       const request = new Request()
       return request.get('https://jsonplaceholder.typicode.com/todos/1').then(() => {
         expect(request.statusCode).toBe(200)
+      })
+    })
+
+    it('has a status code of 404 when fetching from an unknown url', () => {
+      const request = new Request()
+      return request.get('https://www.gmail.com/hello').then(() => {
+        expect(request.statusCode).toBe(404)
       })
     })
   })
