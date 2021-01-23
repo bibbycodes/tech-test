@@ -14,5 +14,13 @@ describe('Request', () => {
         error: "The Url is invalid"
       })
     })
+
+    it('returns json data when fetching from a json endpoint', () => {
+      const request = new Request()
+      return request.get('https://jsonplaceholder.typicode.com/todos/1')
+        .then(data => {
+          expect(typeof JSON.parse(data)).toBe('object')
+        })
+    })
   })
 })
