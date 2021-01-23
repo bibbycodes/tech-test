@@ -36,5 +36,13 @@ describe('Request', () => {
         expect(request.statusCode).toBe(404)
       })
     })
+
+    it('can fetch http endpoints', () => {
+      return request.get('http://jsonplaceholder.typicode.com/todos/1').then(data => {
+        expect(request.statusCode).toBe(200)
+        expect(typeof JSON.parse(data)).toBe('object')
+      })
+    })
+    
   })
 })
