@@ -22,5 +22,12 @@ describe('Request', () => {
           expect(typeof JSON.parse(data)).toBe('object')
         })
     })
+
+    it('returns a status code of 200 on successful retrieval of data', () => {
+      const request = new Request()
+      return request.get('https://jsonplaceholder.typicode.com/todos/1').then(() => {
+        expect(request.statusCode).toBe(200)
+      })
+    })
   })
 })
