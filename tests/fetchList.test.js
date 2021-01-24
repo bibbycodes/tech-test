@@ -58,7 +58,7 @@ describe('fetchList', () => {
   it('rejects if areMutuallyDependent is true and one of the urls is invalid', async () => {
     await fetchList(urlsOneInvalid, true)
       .catch(error => {
-        expect(error.message).toBe("Invalid URL: invalid/url")
+        expect(error.errorMessage).toBe("The URL is invalid")
       })
     })
 })
