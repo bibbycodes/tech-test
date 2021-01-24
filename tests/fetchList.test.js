@@ -64,8 +64,8 @@ describe('fetchList', () => {
     }
   });
 
-  it('rejects if ignoreError is true and one of the urls is invalid', async () => {
-    await fetchList(urlsOneInvalid, true).catch((error) => {
+  it('rejects if ignoreError is false and one of the urls is invalid', async () => {
+    await fetchList(urlsOneInvalid, false).catch((error) => {
       expect(error.message).toBe('The URL is invalid');
     });
   });
