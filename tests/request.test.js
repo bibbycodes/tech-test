@@ -1,4 +1,4 @@
-const { it, describe } = require('@jest/globals');
+const { it, describe, expect } = require('@jest/globals');
 
 const Request = require('../lib/request')
 
@@ -21,28 +21,30 @@ describe('Request', () => {
 
     it('returns json data when fetching from a json endpoint', () => {
       return request.get('http://localhost:3100/api/users')
-        .then(data => {
-          expect(typeof JSON.parse(data)).toBe('object')
+        .then(response => {
+          expect(typeof JSON.parse(response.data)).toBe('object')
         })
     })
 
     it('has a status code of 200 on successful retrieval of data', () => {
-      return request.get('http://localhost:3100/api/users').then(() => {
-        expect(request.statusCode).toBe(200)
-      })
+      return request.get('http://localhost:3100/api/users')
+        .then(response => {
+          expect(response.statusCode).toBe(200)
+        })
     })
 
     it('has a status code of 404 when fetching from an unknown url', async () => {
-      await request.get('http://localhost:3100/unknown').catch(e => {
-        expect(e.errorMessage).toEqual("The requested resource is not in json format")
-      })
-      expect(request.statusCode).toBe(404)
+      await request.get('http://localhost:3100/unknown')
+        .catch(e => {
+          expect(e.errorMessage).toEqual("The requested resource is not in json format")
+          expect(e.response.statusCode).toBe(404)
+        })
     })
 
     it('can fetch https endpoints', () => {
-      return request.get('https://jsonplaceholder.typicode.com/todos/1').then(data => {
-        expect(request.statusCode).toBe(200)
-        expect(typeof JSON.parse(data)).toBe('object')
+      return request.get('https://jsonplaceholder.typicode.com/todos/1').then(response => {
+        expect(response.statusCode).toBe(200)
+        expect(typeof JSON.parse(response.data)).toBe('object')
       })
     })
 

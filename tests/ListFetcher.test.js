@@ -18,9 +18,9 @@ describe('listFetcher', () => {
       'http://localhost:3100/api/users', 
       'http://localhost:3100/api/users'
     ]
-    return listFetcher(urls).then(data => {
-      for (let datum of data) {
-        expect(typeof JSON.parse(datum)).toBe('object')
+    return listFetcher(urls).then(responses => {
+      for (let response of responses) {
+        expect(typeof JSON.parse(response.data)).toBe('object')
       }
     })
   })
