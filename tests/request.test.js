@@ -15,13 +15,13 @@ describe('Request', () => {
 
     it('rejects when passed an empty string', async () => {
       await request.get('').catch(e => {
-        expect(e.errorMessage).toEqual("The Url is empty")
+        expect(e.message).toEqual("The Url is empty")
       })
     })
 
     it('rejects when passed null', async () => {
       await request.get().catch(e => {
-        expect(e.errorMessage).toEqual("The Url is empty")
+        expect(e.message).toEqual("The Url is empty")
       })
     })
 
@@ -42,7 +42,7 @@ describe('Request', () => {
     it('has a status code of 404 when fetching from an unknown url', async () => {
       await request.get('http://localhost:3100/unknown')
         .catch(e => {
-          expect(e.errorMessage).toEqual("The requested resource is not in json format")
+          expect(e.message).toEqual("The requested resource is not in json format")
           expect(e.response.statusCode).toBe(404)
         })
     })
@@ -56,13 +56,13 @@ describe('Request', () => {
 
     it('rejects if the endpoint is not json', async () => {
       await request.get('http://localhost:3100/index').catch(e => {
-        expect(e.errorMessage).toEqual("The requested resource is not in json format")
+        expect(e.message).toEqual("The requested resource is not in json format")
       })
     })
 
     it('rejects on an invalid url', async () => {
       await request.get("not valid/ru").catch(e => {
-        expect(e.errorMessage).toBe("The URL is invalid")
+        expect(e.message).toBe("The URL is invalid")
       })
     })
   })
@@ -85,10 +85,6 @@ describe('Request', () => {
     it('returns false when passed notvalid/ru', () => {
       expect(request.isUrl("notvalid/ru")).toBe(false)
     })
-
-    // it('returns false when passed localhost:3100', () => {
-    //   expect(request.isUrl("localhost:3100")).toBe(false)
-    // })
 
     it('returns true when passed 127.0.0.1', () => {
       expect(request.isUrl('https://127.0.0.1')).toBe(true)
