@@ -4,7 +4,7 @@
 
 <div align="center">
 
-[Installation ](#installation) - [Usage ](#usage) [Tests ](#tests) 
+[Installation ](#installation) - [Usage ](#usage) - [Tests ](#tests) 
 
 </div>
 
