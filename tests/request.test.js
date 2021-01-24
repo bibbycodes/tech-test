@@ -14,8 +14,8 @@ describe('Request', () => {
     })
 
     it('rejects when passed an empty string', async () => {
-      await expect(request.get('')).rejects.toEqual({
-        error: "The Url is invalid"
+      await request.get('').catch(e => {
+        expect(e.errorMessage).toEqual("The Url is invalid")
       })
     })
 
@@ -33,8 +33,8 @@ describe('Request', () => {
     })
 
     it('has a status code of 404 when fetching from an unknown url', async () => {
-      await expect(request.get('http://localhost:3100/unknown')).rejects.toEqual({
-        error: "The requested resource is not in json format"
+      await request.get('http://localhost:3100/unknown').catch(e => {
+        expect(e.errorMessage).toEqual("The requested resource is not in json format")
       })
       expect(request.statusCode).toBe(404)
     })
@@ -47,8 +47,8 @@ describe('Request', () => {
     })
 
     it('rejects if the endpoint is not json', async () => {
-      await expect(request.get('http://localhost:3100/index')).rejects.toEqual({
-        error: "The requested resource is not in json format"
+      await request.get('http://localhost:3100/index').catch(e => {
+        expect(e.errorMessage).toEqual("The requested resource is not in json format")
       })
     })
   })
@@ -62,4 +62,5 @@ describe('Request', () => {
       expect(request.isHttps('http://www.google.com')).toBe(false)
     })
   })
+
 })

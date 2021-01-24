@@ -29,5 +29,13 @@ describe('listFetcher', () => {
     await expect(listFetcher(100)).rejects.toEqual({
       error: "Invalid argument, must supply input of type array"
     })
+
+    await expect(listFetcher({})).rejects.toEqual({
+      error: "Invalid argument, must supply input of type array"
+    })
+
+    await expect(listFetcher("[]")).rejects.toEqual({
+      error: "Invalid argument, must supply input of type array"
+    })
   })
 })
