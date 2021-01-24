@@ -1,10 +1,12 @@
 ##
 
-<h1 align=center>Robert Griffith Mid Level Software Engineer Tech Test/h1>
+<h1 align=center>Robert Griffith Mid Level Software Engineer Tech Test </h1>
 
 <div align="center">
 
-[Installation ](#installation) - [Usage ](#usage) - [Tests ](#tests) 
+[Installation ](#installation) |
+[Usage ](#usage) | 
+[Tests ](#tests) 
 
 </div>
 
