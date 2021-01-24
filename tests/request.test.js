@@ -81,7 +81,7 @@ describe('Request', () => {
     })
   })
 
-  describe('isValidURl', () => {
+  describe('isValidURL', () => {
     it('returns true when passed a valid url', () => {
       expect(request.isUrl('https://www.google.com')).toBe(true)
     })

@@ -4,7 +4,7 @@
   "description": "A package for fetching lists of json data",
   "main": "node-fetch.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --collect-coverage --verbose"
   },
   "author": "Robert Griffith",
   "license": "ISC",
