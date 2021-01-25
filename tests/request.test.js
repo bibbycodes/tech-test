@@ -1,5 +1,7 @@
 const { it, describe, expect } = require('@jest/globals')
 const { jsonResponse, htmlResponse } = require('./fixtures/mockResponses')
+const https = require("https");
+const http = require("http");
 
 const Request = require('../lib/request')
 
@@ -111,13 +113,22 @@ describe('Request', () => {
   })
 
   describe('isJsonData', () => {
-
     it('returns true when passed a json object', () => {
       expect(request.isJson(jsonResponse)).toBe(true)
     })
 
     it('returns false when passed an html object', () => {
       expect(request.isJson(htmlResponse)).toBe(false)
+    })
+  })
+
+  describe('chooseFetcher', () => {
+    it('returns http when the url is http', () => {
+      expect(request.chooseFetcher('http://127.0.0.1')).toBe(http)
+    })
+
+    it('returns http when the url is https', () => {
+      expect(request.chooseFetcher('https://127.0.0.1')).toBe(https)
     })
   })
 })
