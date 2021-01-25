@@ -1,8 +1,6 @@
 const { it, describe, expect } = require('@jest/globals')
-const { jsonResponse, htmlResponse } = require('./fixtures/mockResponses')
 const https = require("https");
 const http = require("http");
-
 const Request = require('../lib/request')
 
 describe('Request', () => {
@@ -71,54 +69,6 @@ describe('Request', () => {
       await request.get('not valid/ru').catch((e) => {
         expect(e.message).toBe('The URL is invalid')
       })
-    })
-  })
-
-  describe('isHttps', () => {
-    it('returns true when the url is https://www.google.com', () => {
-      expect(request.isHttps('https://www.google.com')).toBe(true)
-    })
-
-    it('returns false when the url is http://www.google.com', () => {
-      expect(request.isHttps('http://www.google.com')).toBe(false)
-    })
-  })
-
-  describe('isValidURL', () => {
-    it('returns true when passed a valid url', () => {
-      expect(request.isUrl('https://www.google.com')).toBe(true)
-    })
-
-    it('returns false when passed notvalid/ru', () => {
-      expect(request.isUrl('notvalid/ru')).toBe(false)
-    })
-
-    it('returns true when passed 127.0.0.1', () => {
-      expect(request.isUrl('https://127.0.0.1')).toBe(true)
-    })
-  })
-
-  describe('isValidURL', () => {
-    it('returns true when passed a valid url', () => {
-      expect(request.isUrl('https://www.google.com')).toBe(true)
-    })
-
-    it('returns false when passed notvalid/ru', () => {
-      expect(request.isUrl('notvalid/ru')).toBe(false)
-    })
-
-    it('returns true when passed 127.0.0.1', () => {
-      expect(request.isUrl('https://127.0.0.1')).toBe(true)
-    })
-  })
-
-  describe('isJsonData', () => {
-    it('returns true when passed a json object', () => {
-      expect(request.isJson(jsonResponse)).toBe(true)
-    })
-
-    it('returns false when passed an html object', () => {
-      expect(request.isJson(htmlResponse)).toBe(false)
     })
   })
 
