@@ -1,4 +1,5 @@
 const { it, describe, expect } = require('@jest/globals')
+const { jsonResponse, htmlResponse } = require('./fixtures/mockResponses')
 
 const Request = require('../lib/request')
 
@@ -92,6 +93,31 @@ describe('Request', () => {
 
     it('returns true when passed 127.0.0.1', () => {
       expect(request.isUrl('https://127.0.0.1')).toBe(true)
+    })
+  })
+
+  describe('isValidURL', () => {
+    it('returns true when passed a valid url', () => {
+      expect(request.isUrl('https://www.google.com')).toBe(true)
+    })
+
+    it('returns false when passed notvalid/ru', () => {
+      expect(request.isUrl('notvalid/ru')).toBe(false)
+    })
+
+    it('returns true when passed 127.0.0.1', () => {
+      expect(request.isUrl('https://127.0.0.1')).toBe(true)
+    })
+  })
+
+  describe('isJsonData', () => {
+
+    it('returns true when passed a json object', () => {
+      expect(request.isJson(jsonResponse)).toBe(true)
+    })
+
+    it('returns false when passed an html object', () => {
+      expect(request.isJson(htmlResponse)).toBe(false)
     })
   })
 })
