@@ -1,6 +1,6 @@
 {
   "name": "@bibbycodes/fetch-list",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A package for fetching lists of json data",
   "main": "./lib/fetchList.js",
   "scripts": {
