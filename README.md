@@ -63,12 +63,6 @@ fetchList(urls2).then((responses) => {
 This behaviour can be overriden by passing `ignoreErrors = false`. This will cause the promise to reject should any of the urls be invalid. This can be useful in cases where each call is dependant on the other calls.
 
 ```javascript
-const urls2 = [
-  'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json',
-  'https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-hkd.json',
-  'invalid url',
-];
-
 // An error occurs because one of the urls is incorrect and ignoreErrors is set to false
 fetchList(urls2, (ignoreErrors = false))
   .then((responses) => {
