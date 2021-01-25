@@ -118,46 +118,43 @@ The tests rely on a mock Http server that must be started before tests can be ru
 You can then run `npm test`. Doing so will give you the results of the unit tests along with test coverage information.
 
 ```
-  PASS  tests/request.test.js
-  Request
-    get
-      ✓ returns a promise (6 ms)
-      ✓ rejects when passed an empty string (4 ms)
-      ✓ rejects when passed null
-      ✓ returns json data when fetching from a json endpoint (14 ms)
-      ✓ has a status code of 200 on successful retrieval of data (3 ms)
-      ✓ has a status code of 404 when fetching from an unknown url (2 ms)
-      ✓ can fetch https endpoints (321 ms)
-      ✓ rejects if the endpoint is not json (7 ms)
-      ✓ rejects on an invalid url (2 ms)
-    chooseFetcher
-      ✓ returns http when the url is http
-      ✓ returns http when the url is https (1 ms)
-
- PASS  tests/fetchList.test.js
-  fetchList
-    ✓ returns a promise (1 ms)
-    ✓ rejects when passed an empty array
-    ✓ resolves to an array containing json data when passed an array with valid urls (4 ms)
-    ✓ rejects when passed an argument that is not an array
-    ✓ does not reject by default if one of the requests fail (5 ms)
-    ✓ rejects if ignoreError is false and one of the urls is invalid (1 ms)
-
  PASS  tests/validate.test.js
   Validate
     isHttps
-      ✓ returns true when the url is https://www.google.com (1 ms)
+      ✓ returns true when the url is https://www.google.com (2 ms)
       ✓ returns false when the url is http://www.google.com
     isValidURL
-      ✓ returns true when passed a valid url
-      ✓ returns false when passed notvalid/ru (1 ms)
-      ✓ returns true when passed 127.0.0.1
-      ✓ returns true when passed a valid url
+      ✓ returns true when passed a valid url (1 ms)
       ✓ returns false when passed notvalid/ru
       ✓ returns true when passed 127.0.0.1
     isJsonData
       ✓ returns true when passed a json object
       ✓ returns false when passed an html object (1 ms)
+
+ PASS  tests/fetchList.test.js
+  fetchList
+    ✓ returns a promise (11 ms)
+    ✓ rejects when passed an empty array (1 ms)
+    ✓ resolves to an array containing json data when passed an array with valid urls (23 ms)
+    ✓ rejects when passed an argument that is not an array (5 ms)
+    ✓ does not reject by default if one of the requests fail (17 ms)
+    ✓ rejects if ignoreError is false and one of the urls is invalid (2 ms)
+
+ PASS  tests/request.test.js
+  Request
+    get
+      ✓ returns a promise (11 ms)
+      ✓ rejects when passed an empty string (11 ms)
+      ✓ rejects when passed null (1 ms)
+      ✓ returns json data when fetching from a json endpoint (11 ms)
+      ✓ has a status code of 200 on successful retrieval of data (4 ms)
+      ✓ has a status code of 404 when fetching from an unknown url (5 ms)
+      ✓ can fetch https endpoints (91 ms)
+      ✓ rejects if the endpoint is not json (5 ms)
+      ✓ rejects on an invalid url (1 ms)
+    chooseFetcher
+      ✓ returns http when the url is http (1 ms)
+      ✓ returns http when the url is https
 
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
@@ -172,9 +169,10 @@ All files          |   98.08 |      100 |   94.44 |     100 |
   mockResponses.js |     100 |      100 |     100 |     100 |                   
 -------------------|---------|----------|---------|---------|-------------------
 Test Suites: 3 passed, 3 total
-Tests:       27 passed, 27 total
+Tests:       24 passed, 24 total
 Snapshots:   0 total
-Time:        1.874 s
+Time:        1.715 s, estimated 2 s
+Ran all test suites.
 ```
 
 ## Approach
